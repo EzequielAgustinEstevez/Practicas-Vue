@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>Asinc & Awite</title>
+</head>
+
+<body>
+    <div class="centrado" id="app">
+        <h1 :class="{'bg-info' : color, 'bg-success' : !color}">{{titulo}}</h1>
+        <button @click="color = !color">Cmabiar de color</button>
+        <span> Fruta</span><input type="text" v-model.text="nuevaFruta" @keyup.enter="agregarFruta">
+        <span> Cantidad</span><input min="0" type="number" v-model.number="cantidadFruta" @keyup.enter="agregarFruta">
+        <button @click='agregarFruta'>Agregar</button>
+        <ul>
+            <li v-for="fruta of frutas">
+                <input type="number" v-model.number="fruta.cantidad">
+                {{fruta.nombre}}
+                <button @click="fruta.cantidad++">+</button>
+                <button @click="fruta.cantidad--"> - </button>
+                <span v-if="fruta.cantidad <= 0"> - SIN STOCK :(
+            </li>
+        </ul>
+        <h1>Total: {{sumarFrutas}}</h1>
+    </div>
+</body>
+<!-- CDN Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="/index.js"></script>
+
+</html>

@@ -20,7 +20,6 @@ const app = new Vue({
             })
             this.nuevaFruta = ''
             this.cantidadFruta = ''
-
         }
     },
     computed: {

@@ -39,17 +39,17 @@ const app = new Vue({
 /* fech async await */
 const obtenerProvincias = async () => {
     try {
-        const res = await fetch('/provincias.json')
+        const res = await fetch('/clase 02-03/provincias.json')
         const data = await res.json()
-
+        console.log(data)
         /* Crea un array con el contenido de recorer los objetos del json */
         const arrayNombres = data.provincias.map(localidad => localidad.nombre)
         console.log(arrayNombres)
-
+        
         /* Propiedad filtro */
         const arrayNombres2 = data.provincias.filter(localidad => localidad.nombre == 'Chaco')
         console.log(arrayNombres2)
-
+        
     } catch (error) {
         console.log(error)
     }

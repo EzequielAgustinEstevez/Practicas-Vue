@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuex</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <titulo></titulo>
+    </div>
+
+
+    <script>
+        Vue.component('titulo', {
+            template: //html
+                `
+                <div>
+                    <h1>numero  {{$store.state.numero}}</h1>
+                    <hijo></hijo>
+                    </div>
+                    `
+        });
+
+        Vue.component('hijo', {
+            template: /* store.commit('aumentar') se llama al VueX store, pasa por el commit para  lograr ejecutar el mutator function aumentar  */ //html
+                `
+                    <div>
+                        <button @click="$store.commit('aumentar')">+</button>
+                        <h1>numero  {{$store.state.numero}}</h1>
+                </div>
+                `
+        });
+        /* Utilizamos  VueX */
+        const store = new Vuex.Store({
+            /* Datos globales */
+            state: {
+                numero: 10
+            },
+            mutations: {
+                aumentar(state) {
+                    state.numero++
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app',
+            /* Para utilizar VueX */
+            store: store
+        })
+    </script>
+</body>
+
+</html>
